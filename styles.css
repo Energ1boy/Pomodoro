@@ -1,0 +1,92 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Background with Purple-ish Image */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('tkyo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+  }
+  
+  /* Center Container */
+  .container {
+    text-align: center;
+    padding: 2rem;
+    width: 320px;
+    position: relative;
+    z-index: 1; /* Ensure it stays on top of background */
+  }
+  
+  /* Mode Selector */
+  .mode-selector {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .mode-btn {
+    flex: 1;
+    margin: 0 5px;
+    background: transparent;
+    border: 2px solid #fff; /* Border color for visibility */
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .mode-btn:hover {
+    background: white;
+    color: #1f1f1f; /* Dark text when hovered */
+    transform: scale(1.1);
+  }
+  
+  .mode-btn.active {
+    background: white;
+    color: #1f1f1f;
+    border: 2px solid #fff; /* Keep the border white for consistency */
+  }
+  
+  /* Timer Display */
+  .timer-display {
+    font-size: 5rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    color: white;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Controls */
+  .controls {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .btn {
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn:hover {
+    background: white;
+    color: #1f1f1f; /* Dark text on hover */
+    transform: scale(1.1);
+  }
+  
