@@ -5,32 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pomodoro Timer</title>
   <link rel="stylesheet" href="styles.css">
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body>
+<body class="pomodoro-mode">
   <div class="container">
     <!-- Mode Selection -->
     <div class="mode-selector">
-      <button class="mode-btn" id="pomodoro-mode">Pomodoro</button>
+      <button class="mode-btn active" id="pomodoro-mode">Focus</button>
       <button class="mode-btn" id="shortBreak-mode">Short Break</button>
       <button class="mode-btn" id="longBreak-mode">Long Break</button>
     </div>
 
-    <!-- Timer Display -->
-    <div class="timer-display">
-      <span id="minutes">25</span>:<span id="seconds">00</span>
+    <!-- Timer Display with Circle Progress -->
+    <div class="timer-container">
+      <svg class="timer-circle" viewBox="0 0 100 100">
+        <circle class="background" cx="50" cy="50" r="45"></circle>
+        <circle class="progress" cx="50" cy="50" r="45"></circle>
+      </svg>
+      <div class="timer-display">
+        <span id="minutes">25</span>:<span id="seconds">00</span>
+      </div>
     </div>
 
     <!-- Controls -->
     <div class="controls">
-      <button id="start" class="btn">Start</button>
-      <button id="pause" class="btn">Pause</button>
-      <button id="reset" class="btn">Reset</button>
+      <button id="start" class="btn"><i class="bi bi-play-fill"></i> Start</button>
+      <button id="pause" class="btn"><i class="bi bi-pause-fill"></i> Pause</button>
+      <button id="reset" class="btn"><i class="bi bi-arrow-repeat"></i> Reset</button>
+    </div>
+
+    <!-- Session Counter -->
+    <div class="session-counter">
+      <p>Completed: <span id="completed-count">0</span>/<span id="target-count">4</span></p>
+      <div class="session-dots" id="session-dots"></div>
+    </div>
+
+    <!-- Settings Button -->
+    <button class="settings-btn" id="settings-btn"><i class="bi bi-gear-fill"></i></button>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="settings-modal" id="settings-modal">
+    <div class="settings-content">
+      <h2>Timer Settings</h2>
+      
+      <div class="setting-group">
+        <label for="pomodoro-duration">Focus Duration (minutes)</label>
+        <input type="number" id="pomodoro-duration" min="1" max="60" value="25">
+      </div>
+      
+      <div class="setting-group">
+        <label for="short-break-duration">Short Break Duration (minutes)</label>
+        <input type="number" id="short-break-duration" min="1" max="30" value="5">
+      </div>
+      
+      <div class="setting-group">
+        <label for="long-break-duration">Long Break Duration (minutes)</label>
+        <input type="number" id="long-break-duration" min="1" max="60" value="10">
+      </div>
+      
+      <div class="setting-group">
+        <label for="sessions-goal">Sessions Until Long Break</label>
+        <input type="number" id="sessions-goal" min="1" max="10" value="4">
+      </div>
+      
+      <div class="settings-actions">
+        <button class="save-settings" id="save-settings">Save Changes</button>
+        <button class="close-settings" id="close-settings">Cancel</button>
+      </div>
     </div>
   </div>
+
+  <!-- Notification -->
+  <div class="notification" id="notification"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
